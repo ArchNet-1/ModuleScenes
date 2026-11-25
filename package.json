@@ -4,6 +4,7 @@
   "displayName": "ArchNet - Load Scene Extension",
   "description": "Loads a scene from the build list on start, after a delay, or when Load() is called (e.g. from a button).",
   "unity": "6000.0",
+  "license": "MIT",
   "documentationUrl": "https://archnet-plateform.fr/#LoadSceneExtension",
   "changelogUrl": "https://github.com/ArchNet-1/LoadSceneExtension/blob/main/CHANGELOG.md",
   "licensesUrl": "https://github.com/ArchNet-1/LoadSceneExtension/blob/main/LICENSE.md",

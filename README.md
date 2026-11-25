@@ -23,4 +23,4 @@ Add **ArchNet > Load Scene**, pick the scene in the dropdown, set the delay. Cal
 
 ## License
 
-See [LICENSE.md](LICENSE.md).
+MIT, see [LICENSE.md](LICENSE.md).
