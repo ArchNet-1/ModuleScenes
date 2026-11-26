@@ -1,7 +1,7 @@
 // ArchNet · Load Scene Extension
 // Loads a scene from the build list: on start, after a delay, or when Load() is called
 // (from a button's OnClick for example). The scene is picked by name in the inspector.
-// Docs: https://archnet-plateform.fr/#LoadSceneExtension
+// Docs: https://archnet-plateform.fr/#ModuleScenes
 
 using System.Collections;
 using UnityEngine;

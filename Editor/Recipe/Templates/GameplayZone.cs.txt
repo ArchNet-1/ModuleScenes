@@ -1,0 +1,74 @@
+// Created by the ArchNet Hub (Services > Gameplay). This file is yours: change it freely.
+// The gameplay scene (Assets/ArchNet/Gameplay/Gameplay.unity): put your game here. Its UI has
+// a HUD area and a pause menu whose buttons call these methods (see their OnClick).
+// Docs: https://archnet-plateform.fr/#ModuleScenes
+
+using ArchNet.Core;
+using UnityEngine;
+
+namespace {{NAMESPACE}}
+{
+    public class GameplayZone : MonoBehaviour
+    {
+        [SerializeField] UIPanel _pauseMenu;
+
+        public bool IsPaused { get; private set; }
+
+        void Awake()
+        {
+            UISupport.EnsureEventSystem();
+            if (_pauseMenu != null) _pauseMenu.Hidden.AddListener(OnPauseMenuHidden);
+        }
+{{#if inputs}}
+        // Escape / gamepad Start / Android back pauses when no screen is open.
+        void OnEnable()
+        {
+            if (Services.TryGet(out GameInput input)) input.BackPressed += Pause;
+        }
+
+        void OnDisable()
+        {
+            if (Services.TryGet(out GameInput input)) input.BackPressed -= Pause;
+        }
+{{/if}}
+        void OnDestroy() => Time.timeScale = 1f; // never leave the game frozen
+
+        // The pause menu was closed (Resume button or the Back key): the game goes on.
+        void OnPauseMenuHidden()
+        {
+            if (IsPaused) Resume();
+        }
+
+        public void TogglePause()
+        {
+            if (IsPaused) Resume();
+            else Pause();
+        }
+
+        public void Pause()
+        {
+            IsPaused = true;
+            Time.timeScale = 0f;
+            if (_pauseMenu != null) _pauseMenu.Show();
+        }
+
+        public void Resume()
+        {
+            IsPaused = false;
+            Time.timeScale = 1f;
+            if (_pauseMenu != null) _pauseMenu.Hide();
+        }
+{{#if settings}}
+        public void OpenSettings() => Services.Get<GameSettings>().Open();
+{{/if}}{{#if controls}}
+        public void OpenControls() => Services.Get<ArchNet.Module.ControlsScreen>().Open();
+{{/if}}
+        public {{#if popups}}async {{/if}}void BackToMenu()
+        {
+{{#if popups}}            if (!await Services.Get<GamePopups>().Confirm("Main menu", "Leave this game?", "Leave", "Stay")) return;
+{{/if}}{{#if save}}            var save = Services.Get<GameSave>();
+            if (save.CurrentSlot >= 0) save.Save();
+{{/if}}            Services.Get<GameLoader>().LoadScene(GameLoader.MainMenu);
+        }
+    }
+}

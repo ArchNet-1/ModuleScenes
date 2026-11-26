@@ -1,8 +1,12 @@
 {
-    "name": "ArchNet.Extension.LoadScene",
-    "rootNamespace": "ArchNet.Extension",
-    "references": [],
-    "includePlatforms": [],
+    "name": "ArchNet.Module.Scenes.Editor",
+    "rootNamespace": "ArchNet.Extension.Editor",
+    "references": [
+        "ArchNet.Module.Scenes"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

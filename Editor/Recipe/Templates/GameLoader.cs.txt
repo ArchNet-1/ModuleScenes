@@ -1,0 +1,23 @@
+// Created by the ArchNet Hub (Services > Loading screen). This file is yours: change it freely.
+// Load a scene behind the loading screen from anywhere:
+//   Services.Get<GameLoader>().LoadScene(GameLoader.Gameplay);
+// Restyle the screen and edit the tips: Assets/ArchNet/Loading/Prefabs/Loading.prefab
+// Docs: https://archnet-plateform.fr/#ModuleScenes
+
+using ArchNet.Extension;
+
+namespace {{NAMESPACE}}
+{
+    public class GameLoader : SceneLoader
+    {
+        // Scene names, in one place (they must be in File > Build Profiles > Scene List).
+        public const string MainMenu = "MainMenu";
+        public const string Gameplay = "Gameplay";
+
+        protected override void OnSceneLoaded(string sceneName)
+        {
+            base.OnSceneLoaded(sceneName);
+            // Start the music of the scene, unpause input…
+        }
+    }
+}

@@ -1,12 +1,13 @@
 {
-    "name": "ArchNet.Extension.LoadScene.Editor",
-    "rootNamespace": "ArchNet.Extension.Editor",
+    "name": "ArchNet.Module.Scenes",
+    "rootNamespace": "ArchNet.Extension",
     "references": [
-        "ArchNet.Extension.LoadScene"
+        "ArchNet.Core",
+        "ArchNet.Core.UI",
+        "UnityEngine.UI",
+        "Unity.TextMeshPro"
     ],
-    "includePlatforms": [
-        "Editor"
-    ],
+    "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

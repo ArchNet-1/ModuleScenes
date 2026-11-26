@@ -1,13 +1,16 @@
 {
-  "name": "com.archnet.extension.loadscene",
-  "version": "2.0.0",
+  "name": "com.archnet.module.scenes",
+  "version": "2.1.0",
   "displayName": "ArchNet - Load Scene Extension",
-  "description": "Loads a scene from the build list on start, after a delay, or when Load() is called (e.g. from a button).",
+  "description": "Scenes of your game: a loading screen with progress and tips (Services.Get<GameLoader>().LoadScene(\"Gameplay\")), a ready main menu and a gameplay scene with a pause menu, each added in one click with the ArchNet Hub. The LoadSceneExtension component is still there.",
   "unity": "6000.0",
   "license": "MIT",
-  "documentationUrl": "https://archnet-plateform.fr/#LoadSceneExtension",
-  "changelogUrl": "https://github.com/ArchNet-1/LoadSceneExtension/blob/main/CHANGELOG.md",
-  "licensesUrl": "https://github.com/ArchNet-1/LoadSceneExtension/blob/main/LICENSE.md",
+  "documentationUrl": "https://archnet-plateform.fr/#ModuleScenes",
+  "changelogUrl": "https://github.com/ArchNet-1/ModuleScenes/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://github.com/ArchNet-1/ModuleScenes/blob/main/LICENSE.md",
+  "dependencies": {
+    "com.unity.ugui": "2.0.0"
+  },
   "keywords": [
     "archnet",
     "extension",

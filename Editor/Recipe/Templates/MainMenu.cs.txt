@@ -1,0 +1,39 @@
+// Created by the ArchNet Hub (Services > Menu). This file is yours: change it freely.
+// The buttons of Assets/ArchNet/Menu/MainMenu.unity call these methods (see their OnClick).
+// Services added after the menu (Settings, Credits, Popups, Save) appear here when you click
+// "Update" on the Menu card, as long as you have not changed this file.
+// Docs: https://archnet-plateform.fr/#ModuleScenes
+
+using ArchNet.Core;
+using UnityEngine;
+
+namespace {{NAMESPACE}}
+{
+    public class MainMenu : MonoBehaviour
+    {
+        void Awake() => UISupport.EnsureEventSystem();
+
+        public void Play()
+        {
+{{#if save}}            var save = Services.Get<GameSave>();
+            if (!save.Load(0)) save.NewGame(0); // slot 0: continue, or start a new game
+{{/if}}            Services.Get<GameLoader>().LoadScene(GameLoader.Gameplay);
+        }
+{{#if settings}}
+        public void OpenSettings() => Services.Get<GameSettings>().Open();
+{{/if}}{{#if controls}}
+        public void OpenControls() => Services.Get<ArchNet.Module.ControlsScreen>().Open();
+{{/if}}{{#if credits}}
+        public void OpenCredits() => Services.Get<GameCredits>().Play();
+{{/if}}
+        public {{#if popups}}async {{/if}}void Quit()
+        {
+{{#if popups}}            if (!await Services.Get<GamePopups>().Confirm("Quit", "Leave the game?", "Quit", "Stay")) return;
+{{/if}}#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            Application.Quit();
+#endif
+        }
+    }
+}

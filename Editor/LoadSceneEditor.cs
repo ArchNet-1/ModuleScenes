@@ -1,6 +1,6 @@
-﻿// ArchNet · Load Scene Extension — inspector
+// ArchNet · Load Scene Extension — inspector
 // Shows the scenes of the build list as a dropdown instead of a text field.
-// Docs: https://archnet-plateform.fr/#LoadSceneExtension
+// Docs: https://archnet-plateform.fr/#ModuleScenes
 
 using System.IO;
 using System.Linq;
